@@ -1,12 +1,20 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import { Component } from '@angular/core';
+import { TaskService } from './task.service';
+import {Task} from './model/task.model';
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
+  templateUrl : './app.html',
   styleUrl: './app.css',
-  templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('projettp1angular');
+  taskList : Task [] =[];
+  isLoading: boolean = false;
+  constructor(private taskService : TaskService){
+    this.loadTasks();
+  }
+  loadTasks(): void{
+    this.isLoading=true;
+    this.taskList=this.taskService.getTasks();
+    this.isLoading=false;
+  }
 }

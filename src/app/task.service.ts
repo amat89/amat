@@ -1,0 +1,13 @@
+import {Injectable} from '@angular/core';
+import {Task} from './model/task.model';
+@Injectable({providedIn : 'root'})
+export class TaskService {
+    constructor () {}
+    getTasks(): Task[]{
+        return [
+            {id: 1, title: 'Learn TypeScipt basics',isComplete: true, assignee:'Alice' },
+            {id: 2, title: 'Master Angular control flow', isComplete: false, assignee:''},
+            {id: 3, title: 'Build the final project', isComplete: false, assignee:'Bob' }
+        ]
+    }
+}
